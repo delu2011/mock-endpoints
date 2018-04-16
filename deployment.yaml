@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: mock-endpoint-deployment
+  labels:
+    app: mock-endpoint
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mock-endpoint
+  template:
+    metadata:
+      labels:
+        app: mock-endpoint
+    spec:
+      containers:
+      - name: mock-endpoint
+        image: delu2000/mock-endpoint-app
+        ports:
+          - containerPort: 4500
